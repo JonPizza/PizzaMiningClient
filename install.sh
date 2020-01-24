@@ -1,14 +1,37 @@
 #!/bin/bash
 
-echo "Welcome to PIZZA MINING!!!
+if [[ -z "$1" || -z "$2" ]]; then 
+   echo "Usage:
+sudo $0 <your PizzaMining account username> <this unique rig name>"
+   exit
+fi
+
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root:
+sudo $0 $1" 
+   exit
+fi
+
+echo "$1" > username
+echo "$2" > rig
+
+RED='\033[4;3;1;31m'
+END='\033[0m'
+
+echo -e "${RED}Welcome to \033[5;31mPIZZA MINING!!!${END}
 Installing..."
 
 mkdir -p /mine/
-wget "https://ravenapps.xyz" -q -P /mine/
-# unzip /mine/client.zip
+mkdir -p /mine/miners/
+wget "https://raw.githubusercontent.com/JonPizza/PizzaMiningClient/master/main.py" -q -P /mine/
 echo "@reboot python3 /mine/main.py" | crontab -
 
-echo "Installed Successfully. After reboot mining will begin."
+echo "Installed PizzaMining Software. 
+Installing Nvidia Drivers (this may take a while)..."
+
+apt-get install nvidia-driver-435 -y > /dev/null
+
+echo -e "${RED}Installed Successfully. After reboot mining will begin.${END}"
 echo "Reboot in 5"
 sleep 1
 echo "4"
