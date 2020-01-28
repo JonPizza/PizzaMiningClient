@@ -63,10 +63,10 @@ def miner_exsists():
 
 def main():
     if miner_exsists():
-        start_mining()
+        start_mining("-a x16rv2 -o stratum+tcp://us.rvn.minermore.com:4501 -u UserJonPizza -p c=RVN -i 20")
     else:
         install_miner()
-        start_mining()
+        start_mining("-a x16rv2 -o stratum+tcp://us.rvn.minermore.com:4501 -u UserJonPizza -p c=RVN -i 20")
     
     # while True:
     #     time.sleep(30)
