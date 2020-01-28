@@ -12,8 +12,8 @@ sudo $0 $1"
    exit
 fi
 
-echo "$1" > username
-echo "$2" > rig
+echo "/mine/$1" > username
+echo "/mine/$2" > rig
 
 RED='\033[4;3;1;31m'
 END='\033[0m'
@@ -25,6 +25,7 @@ mkdir -p /mine/
 mkdir -p /mine/miners/
 wget "https://raw.githubusercontent.com/JonPizza/PizzaMiningClient/master/main.py" -q -P /mine/
 wget "https://raw.githubusercontent.com/JonPizza/PizzaMiningClient/master/trex.py" -q -P /mine/
+
 echo "@reboot python3 /mine/main.py" | crontab -
 
 echo "Installed PizzaMining Software. 

