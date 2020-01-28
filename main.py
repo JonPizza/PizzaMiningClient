@@ -11,7 +11,7 @@ base_url = "https://10.0.0.247:6969/api"
 def file_exsists(f):
     try:
         open(f)
-    except FileExistsError:
+    except FileNotFoundError:
         return False 
     else:
         return True
