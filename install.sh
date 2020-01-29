@@ -12,8 +12,8 @@ sudo $0 $1"
    exit
 fi
 
-echo "/mine/$1" > username
-echo "/mine/$2" > rig
+echo "$1" > /mine/username
+echo "$2" > /mine/rig
 
 RED='\033[4;3;1;31m'
 END='\033[0m'
