@@ -25,7 +25,7 @@ mkdir -p /mine/
 mkdir -p /mine/miners/
 wget "https://raw.githubusercontent.com/JonPizza/PizzaMiningClient/master/main.py" -q -P /mine/
 wget "https://raw.githubusercontent.com/JonPizza/PizzaMiningClient/master/trex.py" -q -P /mine/
-
+wget "https://raw.githubusercontent.com/JonPizza/PizzaMiningClient/master/install_miner.sh" -q -P /mine/
 echo "@reboot python3 /mine/main.py" | crontab -
 
 echo "Installed PizzaMining Software. 
