@@ -53,8 +53,8 @@ def handle_report_response(res):
 
 
 def install_miner():
-    os.system('chmod +x install_miner.sh')
-    os.system('./install_miner.sh')
+    os.system('chmod +x /mine/miners/install_miner.sh')
+    os.system('/mine/miners/install_miner.sh')
 
 
 def miner_exsists():
