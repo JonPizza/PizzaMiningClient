@@ -31,6 +31,7 @@ echo "@reboot python3 /mine/main.py" | crontab -
 echo "Installed PizzaMining Software. 
 Installing Nvidia Drivers (this may take a while)..."
 
+apt-get install nvidia-driver-390 -y > /dev/null
 apt-get install nvidia-driver-435 -y > /dev/null
 
 echo -e "${RED}Installed Successfully. After reboot mining will begin.${END}"
